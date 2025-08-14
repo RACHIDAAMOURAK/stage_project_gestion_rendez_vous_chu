@@ -30,7 +30,7 @@ Ce projet est une application web complète de gestion des rendez-vous hospitali
 ### 4. Technologies utilisées
 - Backend : Java, Spring Boot,  JPA/Hibernate, MySQL.
 - Frontend : Angular, Angular Material.
-- Outils : Git, GitHub, Postman, Swagger.
+- Outils : Git, GitHub, Postman.
 
 ### 5. Installation
 Voir les dossiers `rdv-backend` et `rdv-frontend` pour les instructions spécifiques à chaque partie.
