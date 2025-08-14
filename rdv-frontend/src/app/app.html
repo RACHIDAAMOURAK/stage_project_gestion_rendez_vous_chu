@@ -1,0 +1,48 @@
+<mat-toolbar class="main-toolbar" *ngIf="authService.isLoggedIn()">
+  <img src="/AppLogo.png" alt="Logo CHUrdv" class="app-logo" style="height:40px; margin-right:18px; vertical-align:middle;" />
+  <span class="spacer"></span>
+  
+  <!-- Navigation Administrateur -->
+  <ng-container *ngIf="authService.isAdmin()">
+    <button mat-button (click)="goToAdminAccueil()">Accueil</button>
+    <button mat-button routerLink="/patients">Patients</button>
+    <button mat-button routerLink="/medecins">Médecins</button>
+    <button mat-button routerLink="/rendez-vous">Rendez-vous</button>
+    <button mat-button routerLink="/disponibilites">Disponibilités</button>
+    <button mat-button routerLink="/specialites">Spécialités</button>
+    <button mat-button routerLink="/profil-utilisateur">Profil</button>
+    <button mat-button (click)="logout()">
+      <mat-icon></mat-icon>
+      Déconnexion
+    </button>
+  </ng-container>
+
+  <!-- Navigation Médecin -->
+  <ng-container *ngIf="authService.isMedecin()">
+  <button mat-button (click)="goToMedecinAccueil()">Accueil</button>
+  <button mat-button (click)="voirMesRendezVous()">Gérer mes Rendez-vous</button>
+  <button mat-button (click)="voirDisponibilites()">Gérer mes disponibilités</button>
+  <button mat-button (click)="voirStatistiques()">Statistiques</button>
+  <button mat-button routerLink="/profil-utilisateur">Profil</button>
+  <button mat-button (click)="logout()">
+    <mat-icon></mat-icon>
+    Déconnexion
+  </button>
+  </ng-container>
+
+  <!-- Navigation Patient -->
+  <ng-container *ngIf="authService.isPatient()">
+    <button mat-button (click)="goToPatientAccueil()">Accueil</button>
+    <button mat-button routerLink="/prendre-rendez-vous">Prendre rendez-vous</button>
+<button mat-button (click)="goToMesRendezVous()">Mes rendez-vous</button>    
+<button mat-button routerLink="/profil-utilisateur">Profil</button>
+    <button mat-button (click)="logout()">
+      <mat-icon></mat-icon>
+      Déconnexion
+    </button>
+  </ng-container>
+</mat-toolbar>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

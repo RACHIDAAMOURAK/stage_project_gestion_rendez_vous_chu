@@ -1,0 +1,275 @@
+{
+  "info": {
+    "name": "RDV Hospital API Tests",
+    "description": "Collection pour tester l'API de gestion des rendez-vous hospitaliers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api"
+    }
+  ],
+  "item": [
+    {
+      "name": "Patients",
+      "item": [
+        {
+          "name": "Créer un patient",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/patients",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Martin\",\n  \"prenom\": \"Marie\",\n  \"email\": \"marie.martin@email.com\",\n  \"numeroSecu\": \"9876543210987\",\n  \"dateNaissance\": \"1985-05-15\",\n  \"adresse\": \"456 Avenue des Fleurs, 75002 Paris\",\n  \"sexe\": \"FEMME\",\n  \"antecedents\": \"Allergie aux pénicillines\",\n  \"motDePasse\": \"password123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Lister tous les patients",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/patients"
+          }
+        },
+        {
+          "name": "Récupérer un patient par ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/patients/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Médecins",
+      "item": [
+        {
+          "name": "Créer un médecin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/medecins",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Dubois\",\n  \"prenom\": \"Dr. Pierre\",\n  \"email\": \"pierre.dubois@hopital.fr\",\n  \"numeroRPPS\": \"98765432109\",\n  \"specialite\": \"Dermatologie\",\n  \"description\": \"Spécialiste en dermatologie\",\n  \"motDePasse\": \"password123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Lister tous les médecins",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/medecins"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Rendez-vous",
+      "item": [
+        {
+          "name": "Créer un rendez-vous",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/rendez-vous",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patientId\": 1,\n  \"medecinId\": 1,\n  \"dateHeure\": \"2024-08-10T09:00:00\",\n  \"dureeMinutes\": 30,\n  \"statut\": \"EN_ATTENTE\",\n  \"motif\": \"Consultation dermatologique\",\n  \"notes\": \"Première consultation\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Lister tous les rendez-vous",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/rendez-vous"
+          }
+        },
+        {
+          "name": "Rendez-vous en attente",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/rendez-vous/en-attente"
+          }
+        },
+        {
+          "name": "Rendez-vous confirmés",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/rendez-vous/confirmes"
+          }
+        },
+        {
+          "name": "Rendez-vous annulés",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/rendez-vous/annules"
+          }
+        },
+        {
+          "name": "Rendez-vous par patient",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/rendez-vous/patient/1"
+          }
+        },
+        {
+          "name": "Rendez-vous par médecin",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/rendez-vous/medecin/1"
+          }
+        },
+        {
+          "name": "Confirmer un rendez-vous",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/rendez-vous/1/confirmer"
+          }
+        },
+        {
+          "name": "Terminer un rendez-vous",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/rendez-vous/2/terminer"
+          }
+        },
+        {
+          "name": "Annuler un rendez-vous",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/rendez-vous/3/annuler"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Disponibilités",
+      "item": [
+        {
+          "name": "Créer une disponibilité",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/disponibilites",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"medecinId\": 1,\n  \"jourSemaine\": \"MONDAY\",\n  \"heureDebut\": \"09:00:00\",\n  \"heureFin\": \"17:00:00\",\n  \"dureeCreneauMinutes\": 30,\n  \"active\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Lister toutes les disponibilités",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/disponibilites"
+          }
+        },
+        {
+          "name": "Disponibilités actives",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/disponibilites/actives"
+          }
+        },
+        {
+          "name": "Disponibilités inactives",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/disponibilites/inactives"
+          }
+        },
+        {
+          "name": "Disponibilités par médecin",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/disponibilites/medecin/1"
+          }
+        },
+        {
+          "name": "Disponibilités par jour",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/disponibilites/jour/MONDAY"
+          }
+        },
+        {
+          "name": "Activer une disponibilité",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/disponibilites/3/activer"
+          }
+        },
+        {
+          "name": "Désactiver une disponibilité",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/disponibilites/1/desactiver"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tests d'erreurs",
+      "item": [
+        {
+          "name": "Rendez-vous avec patient inexistant",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/rendez-vous",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patientId\": 999,\n  \"medecinId\": 1,\n  \"dateHeure\": \"2024-08-10T09:00:00\",\n  \"dureeMinutes\": 30,\n  \"statut\": \"EN_ATTENTE\",\n  \"motif\": \"Test erreur\",\n  \"notes\": \"Test\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Disponibilité avec médecin inexistant",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/disponibilites",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"medecinId\": 999,\n  \"jourSemaine\": \"MONDAY\",\n  \"heureDebut\": \"09:00:00\",\n  \"heureFin\": \"17:00:00\",\n  \"dureeCreneauMinutes\": 30,\n  \"active\": true\n}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+} 

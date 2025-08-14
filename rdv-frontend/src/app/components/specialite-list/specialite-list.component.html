@@ -1,0 +1,52 @@
+
+<div class="specialite-list-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title class="list-title">
+        <mat-icon>category</mat-icon>
+        Liste des Spécialités
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let s of specialites">
+              <td *ngIf="!isEditing || selectedSpecialite?.id !== s.id">{{ s.nom }}</td>
+              <td *ngIf="isEditing && selectedSpecialite?.id === s.id">
+                <input [(ngModel)]="selectedSpecialite!.nom" />
+              </td>
+              <td>
+                <button mat-icon-button color="primary" class="action-edit" *ngIf="!isEditing || selectedSpecialite?.id !== s.id" (click)="selectSpecialite(s)" matTooltip="Modifier">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button class="action-edit" *ngIf="isEditing && selectedSpecialite?.id === s.id" (click)="saveSpecialite()" matTooltip="Enregistrer">
+                  <mat-icon>save</mat-icon>
+                </button>
+                <button mat-icon-button class="action-edit" *ngIf="isEditing && selectedSpecialite?.id === s.id" (click)="cancelEdit()" matTooltip="Annuler">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" class="action-delete" (click)="deleteSpecialite(s.id)" matTooltip="Supprimer">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="ajout_title">Ajouter une spécialité</h3>
+      <form (ngSubmit)="addSpecialite()" class="add-form">
+        <input [(ngModel)]="newSpecialite.nom" name="nom" placeholder="Nom" required />
+        <button mat-raised-button color="primary" type="submit">
+          <mat-icon>add</mat-icon> Ajouter
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
