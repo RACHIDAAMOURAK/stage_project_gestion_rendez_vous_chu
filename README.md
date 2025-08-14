@@ -8,7 +8,7 @@ Ce projet est une application web complète de gestion des rendez-vous hospitali
 
 ### 1. Backend (Spring Boot)
 - API REST sécurisée pour la gestion des utilisateurs (patients, médecins, admin), des rendez-vous, des disponibilités, des spécialités, etc.
-- Authentification JWT, gestion des rôles et droits d’accès.
+-  gestion des rôles et droits d’accès.
 - Gestion des créneaux horaires, prise de rendez-vous, annulation, historique.
 - Documentation API (Swagger/Postman).
 
@@ -28,9 +28,8 @@ Ce projet est une application web complète de gestion des rendez-vous hospitali
 - Interface d’administration pour la gestion des utilisateurs, spécialités, etc.
 
 ### 4. Technologies utilisées
-- Backend : Java, Spring Boot, Spring Security, JPA/Hibernate, MySQL/PostgreSQL.
-- Frontend : Angular, Angular Material, RxJS.
-- Authentification : JWT.
+- Backend : Java, Spring Boot,  JPA/Hibernate, MySQL.
+- Frontend : Angular, Angular Material.
 - Outils : Git, GitHub, Postman, Swagger.
 
 ### 5. Installation
