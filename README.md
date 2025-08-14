@@ -10,7 +10,7 @@ Ce projet est une application web complète de gestion des rendez-vous hospitali
 - API REST sécurisée pour la gestion des utilisateurs (patients, médecins, admin), des rendez-vous, des disponibilités, des spécialités, etc.
 -  gestion des rôles et droits d’accès.
 - Gestion des créneaux horaires, prise de rendez-vous, annulation, historique.
-- Documentation API (Swagger/Postman).
+- Documentation API (Postman).
 
 ### 2. Frontend (Angular)
 - Interface moderne et responsive pour patients, médecins et administrateurs.
