@@ -190,7 +190,7 @@ export class MedecinFormComponent implements OnInit {
       numeroRPPS: [medecin?.numeroRPPS || '', Validators.required],
       specialite: [medecin?.specialite || '', Validators.required],
       description: [medecin?.description || ''],
-      motDePasse: ['', this.isEditMode ? [] : [Validators.required]],
+      motDePasse: [medecin?.motDePasse || '', Validators.required],
       role: ['MEDECIN']
     });
   }

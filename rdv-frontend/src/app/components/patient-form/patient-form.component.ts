@@ -85,15 +85,15 @@ import { InscriptionDTO } from '../../models/inscription-dto.model';
           </div>
 
           <div class="form-row">
-            <mat-form-field appearance="outline">
-              <mat-label>Date de Naissance</mat-label>
-              <input matInput [matDatepicker]="picker" formControlName="dateNaissance" required>
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-              <mat-error *ngIf="patientForm.get('dateNaissance')?.hasError('required')">
-                La date de naissance est requise
-              </mat-error>
-            </mat-form-field>
+           <mat-form-field appearance="outline">
+  <mat-label>Date de Naissance</mat-label>
+  <input matInput [matDatepicker]="picker" formControlName="dateNaissance" required>
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+  <mat-error *ngIf="patientForm.get('dateNaissance')?.hasError('required')">
+    La date de naissance est requise
+  </mat-error>
+</mat-form-field>
 
             <mat-form-field appearance="outline">
               <mat-label>Sexe</mat-label>
@@ -157,6 +157,38 @@ import { InscriptionDTO } from '../../models/inscription-dto.model';
       margin: 20px;
       max-width: 800px;
     }
+
+
+  ::ng-deep .mat-datepicker-content {
+    background-color: #fff !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18) !important;
+  }
+
+  ::ng-deep .mat-calendar {
+    color: #20B2AA !important;
+  }
+
+  ::ng-deep .mat-calendar .mat-calendar-body-cell {
+    background-color: #f9f9f9 !important;
+  }
+
+  ::ng-deep .mat-calendar .mat-calendar-body-cell:hover {
+    background-color: rgba(32, 178, 170, 0.08) !important;
+  }
+
+  ::ng-deep .mat-calendar .mat-calendar-body-cell.mat-calendar-body-selected {
+    background-color: rgba(32, 178, 170, 0.18) !important;
+    color: #fff !important;
+  }
+
+
+
+
+
+
+
+
+
   `]
 })
 export class PatientFormComponent implements OnInit {
@@ -196,7 +228,7 @@ export class PatientFormComponent implements OnInit {
       adresse: [patient?.adresse || '', Validators.required],
       sexe: [patient?.sexe || '', Validators.required],
       antecedents: [patient?.antecedents || ''],
-      motDePasse: ['', this.isEditMode ? [] : [Validators.required]],
+     motDePasse: [patient?.motDePasse || '', Validators.required],
       role: ['PATIENT']
     });
   }
@@ -250,7 +282,6 @@ export class PatientFormComponent implements OnInit {
   }
 
   onCancel(): void {
-    // TODO: Naviguer vers la liste ou fermer le formulaire
-    console.log('Annuler');
+    this.router.navigate(['/patients']);
   }
 }
